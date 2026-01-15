@@ -1,0 +1,116 @@
+﻿button#stickymobiletoggler{ /* mobile menu toggler */
+  display: none;
+}
+
+#stickymenuwrapper{
+	position: relative;
+	height: auto;
+}
+
+div#stickymenudiv{
+  width: 100%;
+  position: relative;
+  min-height: 50px; /* The minimum height of the sticky menu container */
+  background: #681515;
+  display: table;
+  margin: 0;
+  padding: 5px; /* The padding of the sticky menu container */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+div#stickymenudiv:after{ /* pseudo element to create transparent background */
+  content: '';
+  position: absolute;
+  display: block;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: white;
+  opacity: 0;
+}
+
+div#stickymenudiv ul{
+  list-style: none;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  z-index: 5;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle; /* vertically center UL inside container */
+  font: bold 1.1em Arial;
+  text-transform: uppercase;
+  -webkit-transition: all .5s; /* transition time */
+  transition: all .5s; /* transition time */
+}
+
+div#stickymenudiv ul li{
+  display: inline;
+  text-align: center;
+  margin:  auto;
+}
+
+div#stickymenudiv ul li a{
+  text-decoration: none;
+  text-align: center;
+  display: inline-block;
+  padding: 5px 10px;
+  border-right: 1px solid #eee;
+  color: white;
+}
+
+div#stickymenudiv ul li:last-of-type a{
+  border-right-width: 0;
+}
+
+div#stickymenudiv ul li a img{
+  vertical-align: middle;
+  border-width: 0;
+}
+
+div#stickymenudiv ul li a:hover{
+  background: #b53131;
+}
+
+body.sticky div#stickymenudiv{ /* #stickymenudiv style when menu is sticky (BODY has sticky class) */
+	position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+  -webkit-animation: glidein 0.5s forwards; /* animate sticky menu into view */
+  animation: glidein 0.5s forwards; /* animate sticky menu into view */
+}
+
+body.sticky div#stickymenudiv:after{
+  opacity: .9; /* opacity of background DIV when menu is sticky */
+}
+
+@-webkit-keyframes glidein{
+  from{-webkit-transform: translate3d(0,-100%,0)}
+  to{-webkit-transform: translate3d(0,0,0)}
+}
+
+@keyframes glidein{
+  from{transform: translate3d(0,-100%,0)}
+  to{transform: translate3d(0,0,0)}
+}
+
+
+/* ##### responsive style ##### */
+
+@media (max-width: 700px){
+  div#stickymenudiv ul{
+    font-size: .9em;
+  }
+  
+  div#stickymenudiv ul li a img{
+    width: 36px;
+    height: auto;
+  }
+}
+
